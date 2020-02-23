@@ -26,7 +26,7 @@ jQuery(document).ready(function( $ ) {
       var $mobile_nav = $('#nav-menu-container').clone().prop({ id: 'mobile-nav'});
       $mobile_nav.find('> ul').attr({ 'class' : '', 'id' : '' });
       $('body').append( $mobile_nav );
-      $('body').prepend( '<button type="button" id="mobile-nav-toggle"><i class="fa fa-bars"></i></button>' );
+      $('body').prepend( '<button type="button" id="mobile-nav-toggle"><i class="fa fa-bars" style="color: #03C4EB"></i></button>' );
       $('body').append( '<div id="mobile-body-overly"></div>' );
       $('#mobile-nav').find('.menu-has-children').prepend('<i class="fa fa-chevron-down"></i>');
       
@@ -90,6 +90,52 @@ jQuery(document).ready(function( $ ) {
           }
       }
   });
+
+    // Porfolio isotope and filter
+    $(window).on('load', function() {
+        var portfolioIsotope = $('.gallery-container').isotope({
+            itemSelector: '.gallery-item',
+            layoutMode: 'fitRows'
+        });
+
+        $('#gallery-flters li').on('click', function() {
+            $("#gallery-flters li").removeClass('filter-active');
+            $(this).addClass('filter-active');
+
+            portfolioIsotope.isotope({
+                filter: $(this).data('filter')
+            });
+        });
+
+        // Initiate venobox (lightbox feature used in portofilo)
+        $(document).ready(function() {
+            $('.venobox').venobox();
+        });
+    });
+
+    // Clients carousel (uses the Owl Carousel library)
+    $(".clients-carousel").owlCarousel({
+        autoplay: true,
+        dots: true,
+        loop: true,
+        responsive: {
+            0: {
+                items: 2
+            },
+            768: {
+                items: 4
+            },
+            900: {
+                items: 6
+            }
+        }
+    });
+
+    // Initi AOS
+    AOS.init({
+        duration: 800,
+        easing: "ease-in-out"
+    });
   
   // Back to top button
   $(window).scroll(function() {
