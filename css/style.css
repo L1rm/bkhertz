@@ -895,6 +895,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 #contact .info p {
   padding: 0 0 10px 50px;
   line-height: 24px;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 #contact .form #sendmessage {
